@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsp="http://java.sun.com/JSP/Page">
+
+<h:head>
+    <title>Your Solar System</title>
+</h:head>
+<h:body>
+    <h:outputStylesheet name="css/style.css"/>
+
+    <h:form id="calculatorForm">
+        <jsp:useBean id="calculator" scope="page" type="com.Puiu.Alex.Controller.Calculator"/>
+        <p:dataGrid id="dataGrid1" var="planet" value="#{calculator.planets}" columns="#{calculator.numberOfPlanets}"
+                    layout="tabular"
+                    rows="1">
+            <f:facet name="header">
+                Your solar system
+            </f:facet>
+
+            <p:panel header="Planet #{planet.number}:" style="width:350px;text-align:center">
+                <h:panelGrid columns="2" style="width:100%" width="300">
+
+                    <h:outputText value="Type:"/>
+                    <h:outputText value="#{planet.type}"/>
+
+                    <h:outputText value="Size:"/>
+                    <h:outputText value="#{planet.size}"/>
+
+                    <h:outputText value="Population:"/>
+                    <h:outputText value="#{planet.planetProperties.population}"/>
+
+                    <h:outputText value="Food:"/>
+                    <h:outputText value="#{planet.planetProperties.foodTotal}"/>
+
+                    <h:outputText value="Industry:"/>
+                    <h:outputText value="#{planet.planetProperties.industryTotal}"/>
+
+                    <h:outputText value="Dust:"/>
+                    <h:outputText value="#{planet.planetProperties.goldTotal}"/>
+
+                    <h:outputText value="Science:"/>
+                    <h:outputText value="#{planet.planetProperties.scienceTotal}"/>
+
+                    <h:outputText value="Influence:"/>
+                    <h:outputText value="#{planet.planetProperties.influenceTotal}"/>
+
+                </h:panelGrid>
+
+            </p:panel>
+        </p:dataGrid>
+
+        <p:panelGrid id="panelGrid" columns="5" layout="grid">
+            <p:row rendered="#{calculator.planet1 != null}">
+                <h3 style="margin-top: 0">Anomalies for Planet #{calculator.planet1.number}</h3>
+                <p:pickList id="pickList1" value="#{calculator.planet1.planetProperties.anomalies}"
+                            var="constructedAnomalies" responsive="true"
+                            itemLabel="#{constructedAnomalies.formatString()}" itemValue="#{constructedAnomalies}"
+                            converter="com.Puiu.Alex.Controller.Converters.ConstructedAnomaliesConverter">
+                    <p:ajax event="transfer" listener="#{calculator.actualizeSolarSystem}" update="@form"/>
+                </p:pickList>
+            </p:row>
+
+            <p:row rendered="#{calculator.planet2 != null}">
+                <h3 style="margin-top: 0">Anomalies for Planet #{calculator.planet2.number}</h3>
+                <p:pickList id="pickList2" value="#{calculator.planet2.planetProperties.anomalies}"
+                            var="constructedAnomalies" responsive="true"
+                            itemLabel="#{constructedAnomalies.formatString()}" itemValue="#{constructedAnomalies}"
+                            converter="com.Puiu.Alex.Controller.Converters.ConstructedAnomaliesConverter">
+                    <p:ajax event="transfer" listener="#{calculator.actualizeSolarSystem}" update="@form"/>
+                </p:pickList>
+            </p:row>
+
+            <p:row rendered="#{calculator.planet3 != null}">
+                <h3 style="margin-top: 0">Anomalies for Planet #{calculator.planet3.number}</h3>
+                <p:pickList id="pickList3" value="#{calculator.planet3.planetProperties.anomalies}"
+                            var="constructedAnomalies" responsive="true"
+                            itemLabel="#{constructedAnomalies.formatString()}" itemValue="#{constructedAnomalies}"
+                            converter="com.Puiu.Alex.Controller.Converters.ConstructedAnomaliesConverter">
+                    <p:ajax event="transfer" listener="#{calculator.actualizeSolarSystem}" update="@form"/>
+                </p:pickList>
+            </p:row>
+
+            <p:row rendered="#{calculator.planet4 != null}">
+                <h3 style="margin-top: 0">Anomalies for Planet #{calculator.planet4.number}</h3>
+                <p:pickList id="pickList4" value="#{calculator.planet4.planetProperties.anomalies}"
+                            var="constructedAnomalies" responsive="true"
+                            itemLabel="#{constructedAnomalies.formatString()}" itemValue="#{constructedAnomalies}"
+                            converter="com.Puiu.Alex.Controller.Converters.ConstructedAnomaliesConverter">
+                    <p:ajax event="transfer" listener="#{calculator.actualizeSolarSystem}" update="@form"/>
+                </p:pickList>
+            </p:row>
+
+            <p:row rendered="#{calculator.planet5 != null}">
+                <h3 style="margin-top: 0">Anomalies for Planet #{calculator.planet5.number}</h3>
+                <p:pickList id="pickList5" value="#{calculator.planet5.planetProperties.anomalies}"
+                            var="constructedAnomalies" responsive="true"
+                            itemLabel="#{constructedAnomalies.formatString()}" itemValue="#{constructedAnomalies}"
+                            converter="com.Puiu.Alex.Controller.Converters.ConstructedAnomaliesConverter">
+                    <p:ajax event="transfer" listener="#{calculator.actualizeSolarSystem}" update="@form"/>
+                </p:pickList>
+            </p:row>
+
+        </p:panelGrid>
+
+        <h:panelGrid class="panelGridTerraformPlanets" columns="#{calculator.numberOfPlanets}"
+                     style="text-align:center" title="Terraform options: "
+                     border="2" >
+
+            <h:panelGroup id="panelGroupTerraform1" layout="block" rendered="#{calculator.planet1 != null}">
+                <h:outputLabel for="tp1" value="Terraform Planet 1 into: "
+                               rendered="#{(!empty calculator.planet1.terraformOptions) and (calculator.planet1 != null)}"/>
+                <h:selectOneMenu id="tp1" value="#{calculator.terraformPlanet1}"
+                                 rendered="#{(!empty calculator.planet1.terraformOptions) and (calculator.planet1 != null)}">
+                    <f:selectItem itemLabel="Don't terraform" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                    <f:selectItems var="planetType" value="#{calculator.planet1.terraformOptions}"
+                                   itemValue="#{planetType}"/>
+                </h:selectOneMenu>
+
+                <h:outputLabel for="tp11" value="Terraform Planet 1 into: "
+                               rendered="#{(empty calculator.planet1.terraformOptions) and (calculator.planet1 != null)}"/>
+                <h:selectOneMenu id="tp11" value="#{calculator.terraformPlanet1}"
+                                 rendered="#{(empty calculator.planet1.terraformOptions) and (calculator.planet1 != null)}">
+                    <f:selectItem itemLabel="Maximum lvl. reached" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup id="panelGroupTerraform2" layout="block" rendered="#{calculator.planet2 != null}">
+                <h:outputLabel for="tp2" value="Terraform Planet 2 into: "
+                               rendered="#{(!empty calculator.planet2.terraformOptions) and (calculator.planet2 != null)}"/>
+                <h:selectOneMenu id="tp2" value="#{calculator.terraformPlanet2}"
+                                 rendered="#{(!empty calculator.planet2.terraformOptions) and (calculator.planet2 != null)}">
+                    <f:selectItem itemLabel="Don't terraform" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                    <f:selectItems var="planetType" value="#{calculator.planet2.terraformOptions}"
+                                   itemValue="#{planetType}"/>
+                </h:selectOneMenu>
+                <h:outputLabel for="tp22" value="Terraform Planet 2 into: "
+                               rendered="#{(empty calculator.planet2.terraformOptions) and (calculator.planet2 != null)}"/>
+                <h:selectOneMenu id="tp22" value="#{calculator.terraformPlanet2}"
+                                 rendered="#{(empty calculator.planet2.terraformOptions) and (calculator.planet2 != null)}">
+                    <f:selectItem itemLabel="Maximum lvl. reached" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup id="panelGroupTerraform3" layout="block" rendered="#{calculator.planet3 != null}">
+                <h:outputLabel for="tp3" value="Terraform Planet 3 into: "
+                               rendered="#{(!empty calculator.planet3.terraformOptions) and (calculator.planet3 != null)}"/>
+                <h:selectOneMenu id="tp3" value="#{calculator.terraformPlanet3}"
+                                 rendered="#{(!empty calculator.planet3.terraformOptions) and (calculator.planet3 != null)}">
+                    <f:selectItem itemLabel="Don't terraform" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                    <f:selectItems var="planetType" value="#{calculator.planet3.terraformOptions}"
+                                   itemValue="#{planetType}"/>
+                </h:selectOneMenu>
+                <h:outputLabel for="tp33" value="Terraform Planet 3 into: "
+                               rendered="#{(empty calculator.planet3.terraformOptions) and (calculator.planet3 != null)}"/>
+                <h:selectOneMenu id="tp33" value="#{calculator.terraformPlanet3}"
+                                 rendered="#{(empty calculator.planet3.terraformOptions) and (calculator.planet3 != null)}">
+                    <f:selectItem itemLabel="Maximum lvl. reached" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup id="panelGroupTerraform4" layout="block" rendered="#{calculator.planet4 != null}">
+                <h:outputLabel for="tp4" value="Terraform Planet 4 into: "
+                               rendered="#{(!empty calculator.planet4.terraformOptions) and (calculator.planet4 != null)}"/>
+                <h:selectOneMenu id="tp4" value="#{calculator.terraformPlanet4}"
+                                 rendered="#{(!empty calculator.planet4.terraformOptions) and (calculator.planet4 != null)}">
+                    <f:selectItem itemLabel="Don't terraform" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                    <f:selectItems var="planetType" value="#{calculator.planet4.terraformOptions}"
+                                   itemValue="#{planetType}"/>
+                </h:selectOneMenu>
+                <h:outputLabel for="tp44" value="Terraform Planet 4 into: "
+                               rendered="#{(empty calculator.planet4.terraformOptions) and (calculator.planet4 != null)}"/>
+                <h:selectOneMenu id="tp44" value="#{calculator.terraformPlanet4}"
+                                 rendered="#{(empty calculator.planet4.terraformOptions) and (calculator.planet4 != null)}">
+                    <f:selectItem itemLabel="Maximum lvl. reached" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup id="panelGroupTerraform5" layout="block" rendered="#{calculator.planet5 != null}">
+                <h:outputLabel for="tp5" value="Terraform Planet 5 into: "
+                               rendered="#{(!empty calculator.planet5.terraformOptions) and (calculator.planet5 != null)}"/>
+                <h:selectOneMenu id="tp5" value="#{calculator.terraformPlanet5}"
+                                 rendered="#{(!empty calculator.planet5.terraformOptions) and (calculator.planet5 != null)}">
+                    <f:selectItem itemLabel="Don't terraform" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                    <f:selectItems var="planetType" value="#{calculator.planet5.terraformOptions}"
+                                   itemValue="#{planetType}"/>
+                </h:selectOneMenu>
+                <h:outputLabel for="tp55" value="Terraform Planet 5 into: "
+                               rendered="#{(empty calculator.planet5.terraformOptions) and (calculator.planet5 != null)}"/>
+                <h:selectOneMenu id="tp55" value="#{calculator.terraformPlanet5}"
+                                 rendered="#{(empty calculator.planet5.terraformOptions) and (calculator.planet5 != null)}">
+                    <f:selectItem itemLabel="Maximum lvl. reached" itemValue="" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Reset" itemValue="reset"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+        </h:panelGrid>
+
+        <p:commandButton id="terraformPlanets" actionListener="#{calculator.terraform}" update="@form"
+                         value="Terraform planets"/>
+
+        <p:panelGrid style="text-align:center;margin-top:20px">
+            <f:facet name="header">
+                <p:row>
+                    <p:column colspan="6">Solar system output</p:column>
+                </p:row>
+            </f:facet>
+            <p:row>
+                <p:column>
+                    <h:outputText value="Population: "/>
+                    <h:outputText value="#{calculator.solarSystem.population}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="Food: "/>
+                    <h:outputText value="#{calculator.solarSystem.food}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="Industry: "/>
+                    <h:outputText value="#{calculator.solarSystem.industry}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="Dust: "/>
+                    <h:outputText value="#{calculator.solarSystem.gold}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="Science: "/>
+                    <h:outputText value="#{calculator.solarSystem.science}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="Influence: "/>
+                    <h:outputText value="#{calculator.solarSystem.influence}"/>
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+
+
+    </h:form>
+</h:body>
+</html>

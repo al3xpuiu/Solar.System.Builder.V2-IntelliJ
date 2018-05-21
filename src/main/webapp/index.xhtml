@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Solar System Calculator - Endless Space 2</title>
+</h:head>
+<h:body>
+	<h:outputStylesheet name="css/style.css" />
+	<h:form id="indexForm">
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<p:outputLabel for="planets" value="Select the number of planets: " />
+			<p:selectOneMenu id="planets"
+				value="#{selectNumberOfPlanets.numberOfPlanets}" style="width:125px">
+				<p:ajax event="valueChange" update="indexForm"
+					listener="#{selectNumberOfPlanets.testMethod}" />
+				<f:selectItem itemLabel="1" itemValue="1" />
+				<f:selectItem itemLabel="2" itemValue="2" />
+				<f:selectItem itemLabel="3" itemValue="3" />
+				<f:selectItem itemLabel="4" itemValue="4" />
+				<f:selectItem itemLabel="5" itemValue="5" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+
+		<h:panelGrid columns="3" style="margin-bottom:10px" cellpadding="5">
+			<p:outputLabel id="label1" for="type1" value="Planet 1"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 1}" />
+			<p:selectOneMenu id="type1"
+				value="#{selectNumberOfPlanets.planetType1}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 1}">
+				<f:selectItem itemLabel="Lava Planet " itemValue="LAVA_PLANET" />
+				<f:selectItem itemLabel="Ash Planet" itemValue="ASH_PLANET" />
+				<f:selectItem itemLabel="Desert PLanet" itemValue="DESERT_PLANET" />
+				<f:selectItem itemLabel="Arid PLanet" itemValue="ARID_PLANET" />
+				<f:selectItem itemLabel="Mediterranean PLanet" itemValue="MEDITERRANEAN_PLANET" />
+				<f:selectItem itemLabel="Jungle PLanet" itemValue="JUNGLE_PLANET" />
+				<f:selectItem itemLabel="Atoll PLanet" itemValue="ATOLL_PLANET" />
+				<f:selectItem itemLabel="Toxic PLanet" itemValue="TOXIC_PLANET" />
+				<f:selectItem itemLabel="Savannah PLanet" itemValue="SAVANNAH_PLANET" />
+				<f:selectItem itemLabel="Monsoon PLanet" itemValue="MONSOON_PLANET" />
+				<f:selectItem itemLabel="Terran PLanet" itemValue="TERRAN_PLANET" />
+				<f:selectItem itemLabel="Forest PLanet" itemValue="FOREST_PLANET" />
+				<f:selectItem itemLabel="Steppes PLanet" itemValue="STEPPES_PLANET" />
+				<f:selectItem itemLabel="Tundra PLanet" itemValue="TUNDRA_PLANET" />
+				<f:selectItem itemLabel="Barren PLanet" itemValue="BARREN_PLANET" />
+				<f:selectItem itemLabel="Ice PLanet" itemValue="ICE_PLANET" />
+				<f:selectItem itemLabel="Artic PLanet" itemValue="ARTIC_PLANET" />
+				<f:selectItem itemLabel="Snow PLanet" itemValue="SNOW_PLANET" />
+				<f:selectItem itemLabel="Boreal PLanet " itemValue="BOREAL_PLANET" />
+				<f:selectItem itemLabel="Ocean PLanet" itemValue="OCEAN_PLANET" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="size1"
+				value="#{selectNumberOfPlanets.planetSize1}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 1}">
+				<f:selectItem itemLabel="Tiny" itemValue="TINY" />
+				<f:selectItem itemLabel="Small" itemValue="SMALL" />
+				<f:selectItem itemLabel="Medium" itemValue="MEDIUM" />
+				<f:selectItem itemLabel="Large" itemValue="LARGE" />
+				<f:selectItem itemLabel="Huge" itemValue="HUGE" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="type2" value="Planet 2"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 2}" />
+			<p:selectOneMenu id="type2"
+				value="#{selectNumberOfPlanets.planetType2}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 2}">
+				<f:selectItem itemLabel="Lava Planet " itemValue="LAVA_PLANET" />
+				<f:selectItem itemLabel="Ash Planet" itemValue="ASH_PLANET" />
+				<f:selectItem itemLabel="Desert PLanet" itemValue="DESERT_PLANET" />
+				<f:selectItem itemLabel="Arid PLanet" itemValue="ARID_PLANET" />
+				<f:selectItem itemLabel="Mediterranean PLanet" itemValue="MEDITERRANEAN_PLANET" />
+				<f:selectItem itemLabel="Jungle PLanet" itemValue="JUNGLE_PLANET" />
+				<f:selectItem itemLabel="Atoll PLanet" itemValue="ATOLL_PLANET" />
+				<f:selectItem itemLabel="Toxic PLanet" itemValue="TOXIC_PLANET" />
+				<f:selectItem itemLabel="Savannah PLanet" itemValue="SAVANNAH_PLANET" />
+				<f:selectItem itemLabel="Monsoon PLanet" itemValue="MONSOON_PLANET" />
+				<f:selectItem itemLabel="Terran PLanet" itemValue="TERRAN_PLANET" />
+				<f:selectItem itemLabel="Forest PLanet" itemValue="FOREST_PLANET" />
+				<f:selectItem itemLabel="Steppes PLanet" itemValue="STEPPES_PLANET" />
+				<f:selectItem itemLabel="Tundra PLanet" itemValue="TUNDRA_PLANET" />
+				<f:selectItem itemLabel="Barren PLanet" itemValue="BARREN_PLANET" />
+				<f:selectItem itemLabel="Ice PLanet" itemValue="ICE_PLANET" />
+				<f:selectItem itemLabel="Artic PLanet" itemValue="ARTIC_PLANET" />
+				<f:selectItem itemLabel="Snow PLanet" itemValue="SNOW_PLANET" />
+				<f:selectItem itemLabel="Boreal PLanet " itemValue="BOREAL_PLANET" />
+				<f:selectItem itemLabel="Ocean PLanet" itemValue="OCEAN_PLANET" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="size2"
+				value="#{selectNumberOfPlanets.planetSize2}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 2}">
+				<f:selectItem itemLabel="Tiny" itemValue="TINY" />
+				<f:selectItem itemLabel="Small" itemValue="SMALL" />
+				<f:selectItem itemLabel="Medium" itemValue="MEDIUM" />
+				<f:selectItem itemLabel="Large" itemValue="LARGE" />
+				<f:selectItem itemLabel="Huge" itemValue="HUGE" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="type3" value="Planet 3"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 3}" />
+			<p:selectOneMenu id="type3"
+				value="#{selectNumberOfPlanets.planetType3}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 3}">
+				<f:selectItem itemLabel="Lava Planet " itemValue="LAVA_PLANET" />
+				<f:selectItem itemLabel="Ash Planet" itemValue="ASH_PLANET" />
+				<f:selectItem itemLabel="Desert PLanet" itemValue="DESERT_PLANET" />
+				<f:selectItem itemLabel="Arid PLanet" itemValue="ARID_PLANET" />
+				<f:selectItem itemLabel="Mediterranean PLanet" itemValue="MEDITERRANEAN_PLANET" />
+				<f:selectItem itemLabel="Jungle PLanet" itemValue="JUNGLE_PLANET" />
+				<f:selectItem itemLabel="Atoll PLanet" itemValue="ATOLL_PLANET" />
+				<f:selectItem itemLabel="Toxic PLanet" itemValue="TOXIC_PLANET" />
+				<f:selectItem itemLabel="Savannah PLanet" itemValue="SAVANNAH_PLANET" />
+				<f:selectItem itemLabel="Monsoon PLanet" itemValue="MONSOON_PLANET" />
+				<f:selectItem itemLabel="Terran PLanet" itemValue="TERRAN_PLANET" />
+				<f:selectItem itemLabel="Forest PLanet" itemValue="FOREST_PLANET" />
+				<f:selectItem itemLabel="Steppes PLanet" itemValue="STEPPES_PLANET" />
+				<f:selectItem itemLabel="Tundra PLanet" itemValue="TUNDRA_PLANET" />
+				<f:selectItem itemLabel="Barren PLanet" itemValue="BARREN_PLANET" />
+				<f:selectItem itemLabel="Ice PLanet" itemValue="ICE_PLANET" />
+				<f:selectItem itemLabel="Artic PLanet" itemValue="ARTIC_PLANET" />
+				<f:selectItem itemLabel="Snow PLanet" itemValue="SNOW_PLANET" />
+				<f:selectItem itemLabel="Boreal PLanet " itemValue="BOREAL_PLANET" />
+				<f:selectItem itemLabel="Ocean PLanet" itemValue="OCEAN_PLANET" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="size3"
+				value="#{selectNumberOfPlanets.planetSize3}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 3}">
+				<f:selectItem itemLabel="Tiny" itemValue="TINY" />
+				<f:selectItem itemLabel="Small" itemValue="SMALL" />
+				<f:selectItem itemLabel="Medium" itemValue="MEDIUM" />
+				<f:selectItem itemLabel="Large" itemValue="LARGE" />
+				<f:selectItem itemLabel="Huge" itemValue="HUGE" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="type4" value="Planet 4"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 4}" />
+			<p:selectOneMenu id="type4"
+				value="#{selectNumberOfPlanets.planetType4}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 4}">
+				<f:selectItem itemLabel="Lava Planet " itemValue="LAVA_PLANET" />
+				<f:selectItem itemLabel="Ash Planet" itemValue="ASH_PLANET" />
+				<f:selectItem itemLabel="Desert PLanet" itemValue="DESERT_PLANET" />
+				<f:selectItem itemLabel="Arid PLanet" itemValue="ARID_PLANET" />
+				<f:selectItem itemLabel="Mediterranean PLanet" itemValue="MEDITERRANEAN_PLANET" />
+				<f:selectItem itemLabel="Jungle PLanet" itemValue="JUNGLE_PLANET" />
+				<f:selectItem itemLabel="Atoll PLanet" itemValue="ATOLL_PLANET" />
+				<f:selectItem itemLabel="Toxic PLanet" itemValue="TOXIC_PLANET" />
+				<f:selectItem itemLabel="Savannah PLanet" itemValue="SAVANNAH_PLANET" />
+				<f:selectItem itemLabel="Monsoon PLanet" itemValue="MONSOON_PLANET" />
+				<f:selectItem itemLabel="Terran PLanet" itemValue="TERRAN_PLANET" />
+				<f:selectItem itemLabel="Forest PLanet" itemValue="FOREST_PLANET" />
+				<f:selectItem itemLabel="Steppes PLanet" itemValue="STEPPES_PLANET" />
+				<f:selectItem itemLabel="Tundra PLanet" itemValue="TUNDRA_PLANET" />
+				<f:selectItem itemLabel="Barren PLanet" itemValue="BARREN_PLANET" />
+				<f:selectItem itemLabel="Ice PLanet" itemValue="ICE_PLANET" />
+				<f:selectItem itemLabel="Artic PLanet" itemValue="ARTIC_PLANET" />
+				<f:selectItem itemLabel="Snow PLanet" itemValue="SNOW_PLANET" />
+				<f:selectItem itemLabel="Boreal PLanet " itemValue="BOREAL_PLANET" />
+				<f:selectItem itemLabel="Ocean PLanet" itemValue="OCEAN_PLANET" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="size4"
+				value="#{selectNumberOfPlanets.planetSize4}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 4}">
+				<f:selectItem itemLabel="Tiny" itemValue="TINY" />
+				<f:selectItem itemLabel="Small" itemValue="SMALL" />
+				<f:selectItem itemLabel="Medium" itemValue="MEDIUM" />
+				<f:selectItem itemLabel="Large" itemValue="LARGE" />
+				<f:selectItem itemLabel="Huge" itemValue="HUGE" />
+			</p:selectOneMenu>
+
+			<p:outputLabel id="label5" for="type5" value="Planet 5"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 5}" />
+			<p:selectOneMenu id="type5"
+				value="#{selectNumberOfPlanets.planetType5}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 5}">
+				<f:selectItem itemLabel="Lava Planet " itemValue="LAVA_PLANET" />
+				<f:selectItem itemLabel="Ash Planet" itemValue="ASH_PLANET" />
+				<f:selectItem itemLabel="Desert PLanet" itemValue="DESERT_PLANET" />
+				<f:selectItem itemLabel="Arid PLanet" itemValue="ARID_PLANET" />
+				<f:selectItem itemLabel="Mediterranean PLanet" itemValue="MEDITERRANEAN_PLANET" />
+				<f:selectItem itemLabel="Jungle PLanet" itemValue="JUNGLE_PLANET" />
+				<f:selectItem itemLabel="Atoll PLanet" itemValue="ATOLL_PLANET" />
+				<f:selectItem itemLabel="Toxic PLanet" itemValue="TOXIC_PLANET" />
+				<f:selectItem itemLabel="Savannah PLanet" itemValue="SAVANNAH_PLANET" />
+				<f:selectItem itemLabel="Monsoon PLanet" itemValue="MONSOON_PLANET" />
+				<f:selectItem itemLabel="Terran PLanet" itemValue="TERRAN_PLANET" />
+				<f:selectItem itemLabel="Forest PLanet" itemValue="FOREST_PLANET" />
+				<f:selectItem itemLabel="Steppes PLanet" itemValue="STEPPES_PLANET" />
+				<f:selectItem itemLabel="Tundra PLanet" itemValue="TUNDRA_PLANET" />
+				<f:selectItem itemLabel="Barren PLanet" itemValue="BARREN_PLANET" />
+				<f:selectItem itemLabel="Ice PLanet" itemValue="ICE_PLANET" />
+				<f:selectItem itemLabel="Artic PLanet" itemValue="ARTIC_PLANET" />
+				<f:selectItem itemLabel="Snow PLanet" itemValue="SNOW_PLANET" />
+				<f:selectItem itemLabel="Boreal PLanet " itemValue="BOREAL_PLANET" />
+				<f:selectItem itemLabel="Ocean PLanet" itemValue="OCEAN_PLANET" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="size5"
+				value="#{selectNumberOfPlanets.planetSize5}" style="width:125px"
+				rendered="#{selectNumberOfPlanets.numberOfPlanets >= 5}">
+				<f:selectItem itemLabel="Tiny" itemValue="TINY" />
+				<f:selectItem itemLabel="Small" itemValue="SMALL" />
+				<f:selectItem itemLabel="Medium" itemValue="MEDIUM" />
+				<f:selectItem itemLabel="Large" itemValue="LARGE" />
+				<f:selectItem itemLabel="Huge" itemValue="HUGE" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+		<p:commandButton actionListener="#{selectNumberOfPlanets.createSystem}" action="calculator.xhtml?faces-redirect=true" value="Create System"/>
+	</h:form>
+</h:body>
+</html>

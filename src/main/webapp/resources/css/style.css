@@ -1,0 +1,170 @@
+body {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.0) url("images/background.jpg") repeat center top;
+    background-size: cover;
+    color: #ffffff;
+    max-width: 2000px;
+    min-width: 1875px;
+    min-height: 1000px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.6) ;
+    margin: 50px;
+    text-align: center;
+    min-width: 1775px;
+}
+#indexForm {
+    width: 50%;
+    min-width: 400px;
+    padding: 10px;
+    margin: 200px auto 0 auto;
+}
+
+.ui-button {
+    background: rgb(143,255,255);
+    background: rgb(143,255,255) linear-gradient(top,rgba(255,255,255,0.8),rgba(255,255,255,0));
+    background: rgb(143,255,255) -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.8)),to(rgba(255,255,255,0)));
+    background: rgb(143,255,255) -moz-linear-gradient(top,rgba(255,255,255,0.8),rgba(255,255,255,0));
+    margin: 0px 0px 10px 0px;
+}
+
+.ui-picklist.ui-picklist-responsive .ui-picklist-buttons button {
+    width: 41px;
+}
+
+.ui-widget-content {
+    background-color: inherit;
+    color: inherit;
+}
+
+.ui-selectonemenu-items-wrapper {
+    background-color: #ffffff;
+}
+
+.ui-selectonemenu-items li {
+    background-color: #ffffff;
+    color: #313131;
+    text-align: center;
+}
+
+.ui-widget-header {
+    background: inherit;
+    color:inherit;
+    letter-spacing: 0.3em;
+    font-size: 130%;
+}
+
+.ui-datagrid-row .ui-widget-header {
+    letter-spacing: 0.1em;
+    font-size: 110%;
+}
+
+.ui-datagrid, .ui-panelgrid {
+    margin: 10px;
+    width: auto;
+}
+
+#calculatorForm\:j_idt36 .ui-panelgrid-cell {
+    width: 16%;
+    min-width: 291px;
+    max-width: 16%;
+
+}
+#calculatorForm\:j_idt36 .ui-panelgrid-cell:first-child {
+    padding-left: 2px;
+}
+
+#calculatorForm\:j_idt36 .ui-panelgrid-cell:last-child {
+    padding-right: 2px;
+}
+
+.ui-datagrid-data {
+    border-collapse: collapse;
+}
+
+.ui-datagrid-column, .ui-panelgrid-cell, .ui-panelgrid .ui-panelgrid-cell {
+    width: 350px;
+    padding: 0;
+    margin: 0 auto;
+    border: 1px solid #a8a8a8;
+}
+
+.ui-datagrid-column {
+    border: none;
+}
+
+h3 {
+    text-align: center;
+}
+
+#calculatorForm\:j_idt36 .ui-panelgrid-header, #calculatorForm\:j_idt36 .ui-panelgrid-header .ui-widget-header,
+    #calculatorForm\:j_idt36 .ui-panelgrid-header .ui-widget-header tr {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+#calculatorForm\:j_idt35 .ui-panelgrid-cell {
+    width: 16%;
+    min-width: 291px;
+}
+.ui-datagrid-header {
+    border:none;
+}
+
+.ui-picklist {
+    margin: 0 auto 0 auto;
+    display: block;
+}
+
+.ui-picklist-item {
+    font-size: 80%;
+    font-style: normal;
+}
+
+table, tr, th, td {
+    border: none;
+}
+
+#calculatorForm table {
+    border-collapse: collapse;
+}
+
+#calculatorForm tr {
+    margin: 0 auto;
+}
+
+/*#calculatorForm td {*/
+    /*width: 175px;*/
+    /*padding: 0;*/
+/*}*/
+.panelGridTerraformPlanets {
+    width: 1755px;
+    margin: 20px 10px 30px 10px;
+}
+
+.panelGridTerraformPlanets div {
+    margin: 0 auto;
+    width: 350px;
+}
+
+#calculatorForm\:dataGrid1_content {
+    border: none;
+}
+
+.ui-panel {
+    padding: 0;
+    border: 1px solid #a8a8a8;
+    margin: 0 auto;
+
+}
+.ui-panel-titlebar {
+    border: none;
+}
+
+.ui-grid {
+    border: none;
+}
